@@ -3,10 +3,8 @@
  * @description This defines the data accepted by the superhero api.
  * @exports Superhero
  */
-interface Superhero {
-  name: string;
-  power: string;
-  universe: string;
+export default interface Superhero {
+  name: String,
+  power: String,
+  universe: String,
 }
-
-export default Superhero;

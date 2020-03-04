@@ -1,8 +1,8 @@
-import "dotenv/config";
-import express from "express";
-import bodyParser from "body-parser";
+import 'dotenv/config';
+import express from 'express';
+import bodyParser from 'body-parser';
 
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 import Controller from "./interfaces/controller.interface";
 import errorMiddleware from "./middlewares/error.middleware";
@@ -64,8 +64,8 @@ export default class App {
    */
   private connectToTheDatabase() {
     const {
-      MONGO_USER,
-      MONGO_PASSWORD,
+      // MONGO_USER,
+      // MONGO_PASSWORD,
       MONGO_PATH,
       MONGODB_DATABASE
     } = process.env;

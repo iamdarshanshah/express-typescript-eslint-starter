@@ -7,17 +7,17 @@
  */
 
 import express from 'express';
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from "express";
 
 
 import mongoose from 'mongoose';
-import Superhero from './superhero.interface';
+// import Superhero from './superhero.interface';
 import superheroModel from './superhero.model';
 import HttpException from '../exceptions/HttpException';
+import Superhero from './superhero.interface';
 
 export default class SuperheroController {
   public path = '/superheroes';
-
   public router = express.Router();
 
   /**
