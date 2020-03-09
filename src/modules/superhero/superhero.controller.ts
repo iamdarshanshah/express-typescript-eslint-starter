@@ -13,17 +13,21 @@ import { NextFunction, Request, Response } from "express";
 import mongoose from 'mongoose';
 // import Superhero from './superhero.interface';
 import superheroModel from './superhero.model';
-import HttpException from '../exceptions/HttpException';
+import HttpException from '../../exceptions/HttpException';
 import Superhero from './superhero.interface';
+// import { getAllSuperheroes } from './superhero.service';
+import SuperheroService from './superhero.service';
 
 export default class SuperheroController {
-  public path = '/superheroes';
-  public router = express.Router();
+  path = '/superheroes';
+  router = express.Router();
 
+  // superheroService: SuperheroService;
   /**
    * @constructor
    */
   constructor() {
+    // this.superheroService = new SuperheroService();
     this.initializeRoutes();
   }
 
@@ -44,9 +48,12 @@ export default class SuperheroController {
     response: Response,
     next: NextFunction,
   ): void {
-    superheroModel.find().then((superheroes) => {
-      if (superheroes) response.status(200).send(superheroes);
-      else next(new HttpException(404, 'no superheroes found'));
+    SuperheroService.getAllSuperheroes((err: Error,result: Superhero[])=>{
+      if(err){
+        next(new HttpException(404, 'no superheroes found'));
+      }else {
+        response.status(200).send(result);
+      }
     });
   }
 
@@ -61,10 +68,13 @@ export default class SuperheroController {
     response: Response,
     next: NextFunction,
   ): void {
-    const id = new mongoose.Types.ObjectId(request.params.id);
-    superheroModel.find(id).then((superhero) => {
-      if (superhero) response.status(200).send(superhero);
-      else next(new HttpException(404, `no superhero found for id :: ${id}`));
+    const id = (String)(new mongoose.Types.ObjectId(request.params.id));
+    SuperheroService.getSuperheroById(id,(err:Error,result:Superhero)=>{
+      if(err){
+        next(new HttpException(404, 'no superheroes found for the given id'));
+      }else {
+        response.status(200).send(result);
+      }
     });
   }
 

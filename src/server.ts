@@ -5,8 +5,8 @@
 
 import 'dotenv/config';
 import App from './app';
-import SuperheroController from './superhero/superhero.controller';
+import SuperheroController from './modules/superhero/superhero.controller';
 
-const app = new App( [ new SuperheroController ] , 4000);
+const app = new App(4000);
 
 app.listen();

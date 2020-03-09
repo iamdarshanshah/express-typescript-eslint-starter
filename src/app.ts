@@ -6,23 +6,26 @@ import mongoose from 'mongoose';
 
 import Controller from "./interfaces/controller.interface";
 import errorMiddleware from "./middlewares/error.middleware";
+import Version1Apis from "./api/internal";
 
 export default class App {
   public app: express.Application;
   public port: number;
+  private readonly APIs: Version1Apis[];
 
   /**
    * @constructor
    * @param controllers
    * @param port
    */
-  constructor(controllers: Controller[], port: number) {
+  constructor(port: number) {
     this.app = express();
     this.port = port;
-
+    this.APIs = [new Version1Apis()];
     this.connectToTheDatabase();
     this.initializeMiddlewares();
-    this.initializeControllers(controllers);
+    this.initializeAPIs(this.APIs);
+    // this.initializeControllers(controllers);
     this.initializeErrorhandling();
   }
 
@@ -53,10 +56,20 @@ export default class App {
    * @func initializeControllers Initializes controller.
    * @param controllers
    */
-  private initializeControllers(controllers: Controller[]) {
-    controllers.forEach(controller => {
-      this.app.use('/', controller.router);
-    });
+  // private initializeControllers(controllers: Controller[]) {
+  //   controllers.forEach(controller => {
+  //     this.app.use('/', controller.router);
+  //   });
+  // }
+
+  /**
+   * @func initializeAPIs initializes all the apis for specific version
+   * @param apis
+   */
+  private initializeAPIs(APIs: Version1Apis[]){
+    APIs.forEach(api => {
+      this.app.use('/', api.app);
+    })
   }
 
   /**
