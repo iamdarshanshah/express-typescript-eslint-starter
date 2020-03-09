@@ -1,0 +1,32 @@
+image: node:12-alpine
+
+stages:
+  - build
+  - lint
+  - test
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  policy: pull-push
+  paths:
+    - .npm/
+    # - build/
+
+before_script:
+  - npm ci --cache .npm --prefer-offline
+
+build-ts-starter:
+  stage: build
+  script:
+    - npm install --silent
+    - npm run build
+
+lint-ts-starter:
+  stage: lint
+  script:
+    - npm run lint
+
+test-ts-starter:
+  stage: test
+  script:
+    - npm run lint
