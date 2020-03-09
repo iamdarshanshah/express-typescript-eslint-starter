@@ -6,7 +6,6 @@ stages:
   - test
 
 cache:
-  key: ${CI_COMMIT_REF_SLUG}
   policy: pull-push
   paths:
     - .npm/
