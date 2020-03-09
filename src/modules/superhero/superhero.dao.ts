@@ -1,7 +1,7 @@
-import superheroModel from './superhero.model';
-import Superhero from './superhero.interface';
+import superheroModel from "./superhero.model";
+import Superhero from "./superhero.interface";
 
-import logger from '../../applogger';
+import logger from "../../applogger";
 
 class SuperheroDao {
   getAllSuperheroes(done: CallableFunction){
@@ -10,7 +10,7 @@ class SuperheroDao {
     }).catch((err)=>{
       logger.error("Error occured in finding superhero", err);
       done({err});
-    })
+    });
   }
 
   getSuperheroById(id: string,done: CallableFunction){
@@ -19,7 +19,7 @@ class SuperheroDao {
       done(null,superhero);
     }).catch((err)=>{
       done({err});
-    })
+    });
   }
 
   
