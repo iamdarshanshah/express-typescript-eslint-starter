@@ -11,11 +11,9 @@ import { NextFunction, Request, Response } from "express";
 
 
 import mongoose from 'mongoose';
-// import Superhero from './superhero.interface';
 import superheroModel from './superhero.model';
 import HttpException from '../../exceptions/HttpException';
 import Superhero from './superhero.interface';
-// import { getAllSuperheroes } from './superhero.service';
 import SuperheroService from './superhero.service';
 
 export default class SuperheroController {
