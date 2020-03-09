@@ -22,12 +22,10 @@ export default class SuperheroController {
   path = '/superheroes';
   router = express.Router();
 
-  // superheroService: SuperheroService;
   /**
    * @constructor
    */
   constructor() {
-    // this.superheroService = new SuperheroService();
     this.initializeRoutes();
   }
 

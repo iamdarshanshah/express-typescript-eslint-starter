@@ -12,7 +12,7 @@ import express from 'express';
 
 import Controller from '../../../interfaces/controller.interface';
 
-import SuperherController from '../../../modules/superhero/superhero.controller';
+import SuperheroController from '../../../modules/superhero/superhero.controller';
 
 class Version1APIs {
   public app: express.Application;
@@ -27,7 +27,7 @@ class Version1APIs {
   constructor() {
     this.app = express();
     this.controllers = [
-      new SuperherController()
+      new SuperheroController()
     ]
     this.initializeControllers();
   }
