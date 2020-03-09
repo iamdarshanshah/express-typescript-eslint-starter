@@ -7,12 +7,12 @@
  */
 
 
-import 'dotenv/config';
-import express from 'express';
+import "dotenv/config";
+import express from "express";
 
-import Controller from '../../../interfaces/controller.interface';
+import Controller from "../../../interfaces/controller.interface";
 
-import SuperheroController from '../../../modules/superhero/superhero.controller';
+import SuperheroController from "../../../modules/superhero/superhero.controller";
 
 class Version1APIs {
   public app: express.Application;
@@ -28,7 +28,7 @@ class Version1APIs {
     this.app = express();
     this.controllers = [
       new SuperheroController()
-    ]
+    ];
     this.initializeControllers();
   }
 
@@ -37,7 +37,7 @@ class Version1APIs {
    */
   private initializeControllers() {
     this.controllers.forEach(controller => {
-      this.app.use('/v1', controller.router);
+      this.app.use("/v1", controller.router);
     });
   }
 }

@@ -4,7 +4,7 @@
  * @exports Controller
  */
 
-import { Router } from 'express';
+import { Router } from "express";
 
 interface Controller {
   path: string;

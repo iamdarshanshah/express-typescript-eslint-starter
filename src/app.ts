@@ -1,15 +1,15 @@
-import 'dotenv/config';
-import express from 'express';
-import bodyParser from 'body-parser';
+import "dotenv/config";
+import express from "express";
+import bodyParser from "body-parser";
 
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 import errorMiddleware from "./middlewares/error.middleware";
 import Version1Apis from "./api/internal";
-import morgan from 'morgan';
-import helmet from 'helmet';
+import morgan from "morgan";
+import helmet from "helmet";
 
-import logger from './applogger';
+import logger from "./applogger";
 
 export default class App {
   public app: express.Application;
@@ -45,8 +45,8 @@ export default class App {
    */
   private initializeMiddlewares() {
     this.app.use(bodyParser.json());
-    morgan.token('time', () => Date().toString()); // Both morgan and log4js are configured to same date format, so that log reading is meaningful and not confusing due to different date formats
-    this.app.use(morgan('[:time] :remote-addr :method :url :status :res[content-length] :response-time ms'));
+    morgan.token("time", () => Date().toString()); // Both morgan and log4js are configured to same date format, so that log reading is meaningful and not confusing due to different date formats
+    this.app.use(morgan("[:time] :remote-addr :method :url :status :res[content-length] :response-time ms"));
     this.app.use(helmet());
   }
 
@@ -63,8 +63,8 @@ export default class App {
    */
   private initializeAPIs(APIs: Version1Apis[]){
     APIs.forEach(api => {
-      this.app.use('/', api.app);
-    })
+      this.app.use("/", api.app);
+    });
   }
 
   /**

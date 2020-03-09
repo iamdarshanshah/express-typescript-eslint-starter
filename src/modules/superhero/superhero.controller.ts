@@ -6,18 +6,18 @@
  * @author Darshan Shah
  */
 
-import express from 'express';
+import express from "express";
 import { NextFunction, Request, Response } from "express";
 
 
-import mongoose from 'mongoose';
-import superheroModel from './superhero.model';
-import HttpException from '../../exceptions/HttpException';
-import Superhero from './superhero.interface';
-import SuperheroService from './superhero.service';
+import mongoose from "mongoose";
+import superheroModel from "./superhero.model";
+import HttpException from "../../exceptions/HttpException";
+import Superhero from "./superhero.interface";
+import SuperheroService from "./superhero.service";
 
 export default class SuperheroController {
-  path = '/superheroes';
+  path = "/superheroes";
   router = express.Router();
 
   /**
@@ -46,7 +46,7 @@ export default class SuperheroController {
   ): void {
     SuperheroService.getAllSuperheroes((err: Error,result: Superhero[])=>{
       if(err){
-        next(new HttpException(404, 'no superheroes found'));
+        next(new HttpException(404, "no superheroes found"));
       }else {
         response.status(200).send(result);
       }
@@ -65,9 +65,9 @@ export default class SuperheroController {
     next: NextFunction,
   ): void {
     const id = (String)(new mongoose.Types.ObjectId(request.params.id));
-    SuperheroService.getSuperheroById(id,(err:Error,result:Superhero)=>{
+    SuperheroService.getSuperheroById(id,(err: Error,result: Superhero)=>{
       if(err){
-        next(new HttpException(404, 'no superheroes found for the given id'));
+        next(new HttpException(404, "no superheroes found for the given id"));
       }else {
         response.status(200).send(result);
       }
@@ -80,7 +80,7 @@ export default class SuperheroController {
       .create(superhero)
       .then((res) => {
         if (res) response.status(200).send(res);
-        else next(new HttpException(500, 'Internal server error'));
+        else next(new HttpException(500, "Internal server error"));
       });
   }
 }
