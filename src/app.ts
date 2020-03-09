@@ -9,6 +9,8 @@ import Version1Apis from "./api/internal";
 import morgan from 'morgan';
 import helmet from 'helmet';
 
+import logger from './applogger';
+
 export default class App {
   public app: express.Application;
   public port: number;
@@ -34,7 +36,7 @@ export default class App {
    */
   public listen() {
     this.app.listen(this.port, () => {
-      console.log(`server started at http://localhost:${this.port}`);
+      logger.debug(`server started at http://localhost:${this.port}`);
     });
   }
 
