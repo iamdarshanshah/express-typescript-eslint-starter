@@ -9,10 +9,8 @@
 
 import 'dotenv/config';
 import express from 'express';
-import bodyParser from 'body-parser';
 
 import Controller from '../../../interfaces/controller.interface';
-import errorMiddleware from '../../../middlewares/error.middleware';
 
 import SuperherController from '../../../modules/superhero/superhero.controller';
 

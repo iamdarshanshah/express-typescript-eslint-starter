@@ -4,7 +4,6 @@ import bodyParser from 'body-parser';
 
 import mongoose from 'mongoose';
 
-import Controller from "./interfaces/controller.interface";
 import errorMiddleware from "./middlewares/error.middleware";
 import Version1Apis from "./api/internal";
 
