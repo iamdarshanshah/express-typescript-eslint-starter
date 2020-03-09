@@ -24,7 +24,6 @@ export default class App {
     this.connectToTheDatabase();
     this.initializeMiddlewares();
     this.initializeAPIs(this.APIs);
-    // this.initializeControllers(controllers);
     this.initializeErrorhandling();
   }
 
@@ -50,16 +49,6 @@ export default class App {
   private initializeErrorhandling() {
     this.app.use(errorMiddleware);
   }
-
-  /**
-   * @func initializeControllers Initializes controller.
-   * @param controllers
-   */
-  // private initializeControllers(controllers: Controller[]) {
-  //   controllers.forEach(controller => {
-  //     this.app.use('/', controller.router);
-  //   });
-  // }
 
   /**
    * @func initializeAPIs initializes all the apis for specific version

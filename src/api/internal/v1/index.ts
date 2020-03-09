@@ -34,7 +34,6 @@ class Version1APIs {
 
   /**
    * @func initializeControllers Initializes controller.
-   * @param controllers 
    */
   private initializeControllers() {
     this.controllers.forEach(controller => {
