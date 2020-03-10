@@ -4,7 +4,7 @@
  * @exports Superhero
  */
 export default interface Superhero {
-  name: String,
-  power: String,
-  universe: String,
+  name: string;
+  power: string;
+  universe: string;
 }
