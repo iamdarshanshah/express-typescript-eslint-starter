@@ -1,7 +1,7 @@
 /**
- * @file Creates a Class SuperheroController that will initialize all the routes.
- * @this SuperheroController
- * @exports SuperheroController
+ * @file Creates a Class SuperheroRouter that will initialize all the routes.
+ * @this SuperheroRouter
+ * @exports SuperheroRouter
  *
  * @author Darshan Shah
  */

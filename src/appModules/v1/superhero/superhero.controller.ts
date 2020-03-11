@@ -1,5 +1,5 @@
 /**
- * @file Creates a Class SuperheroController that will initialize all the routes.
+ * @file Creates a Class SuperheroController that will orchestrate the service methods to be invoked.
  * @this SuperheroController
  * @exports SuperheroController
  *
