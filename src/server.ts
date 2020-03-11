@@ -3,9 +3,10 @@
  * @description Entry point for application
  */
 
-import "dotenv/config";
 import App from "./app";
 
-const app = new App(4000);
+import config from "./appConfigs";
+
+const app = new App(config.PORT);
 
 app.listen();

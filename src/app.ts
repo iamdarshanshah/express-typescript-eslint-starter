@@ -1,15 +1,16 @@
-import "dotenv/config";
 import express from "express";
 import bodyParser from "body-parser";
 
 import mongoose from "mongoose";
 
-import errorMiddleware from "./middlewares/error.middleware";
+import errorMiddleware from "./common/httpErrorHandler.middleware";
 import Version1Apis from "./api/internal";
 import morgan from "morgan";
 import helmet from "helmet";
 
-import logger from "./applogger";
+import logger from "./logger";
+
+import config from "./appConfigs";
 
 export default class App {
   public app: express.Application;
@@ -76,7 +77,7 @@ export default class App {
       // MONGO_PASSWORD,
       MONGO_PATH,
       MONGODB_DATABASE
-    } = process.env;
+    } = config;
     mongoose
       .connect(`mongodb://${MONGO_PATH}/${MONGODB_DATABASE}`, {
         useNewUrlParser: true

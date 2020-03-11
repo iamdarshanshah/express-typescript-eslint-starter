@@ -12,11 +12,11 @@ import { NextFunction, Request, Response } from "express";
 
 import mongoose from "mongoose";
 import superheroModel from "./superhero.model";
-import HttpException from "../../exceptions/HttpException";
+import HttpException from "../../../common/exceptions/HttpException";
 import Superhero from "./superhero.interface";
-import SuperheroService from "./superhero.service";
+import SuperheroController from "./superhero.controller";
 
-export default class SuperheroController {
+export default class SuperheroRouter {
   path = "/superheroes";
   router = express.Router();
 
@@ -44,7 +44,7 @@ export default class SuperheroController {
     response: Response,
     next: NextFunction,
   ): void {
-    SuperheroService.getAllSuperheroes((err: Error,result: Superhero[])=>{
+    SuperheroController.getAllSuperheroes((err: Error,result: Superhero[])=>{
       if(err){
         next(new HttpException(404, "no superheroes found"));
       }else {
@@ -65,7 +65,7 @@ export default class SuperheroController {
     next: NextFunction,
   ): void {
     const id = (String)(new mongoose.Types.ObjectId(request.params.id));
-    SuperheroService.getSuperheroById(id,(err: Error,result: Superhero)=>{
+    SuperheroController.getSuperheroById(id,(err: Error,result: Superhero)=>{
       if(err){
         next(new HttpException(404, "no superheroes found for the given id"));
       }else {
