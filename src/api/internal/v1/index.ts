@@ -1,43 +1,38 @@
 /**
- * @file Creates a Class App that will initialize middleware, database, and controllers.
- * @this App
- * @exports App
+ * @file Creates a Class Version1APIs that will initialize ApiRoutes for version v1.
+ * @this Version1APIs
+ * @exports Version1APIs
  * 
  * @author Darshan Shah
  */
 
-
-import "dotenv/config";
 import express from "express";
 
-import Controller from "../../../interfaces/controller.interface";
+import ApiRouter from "../../../common/interfaces/apiRouter.interface";
 
-import SuperheroController from "../../../modules/superhero/superhero.controller";
+import SuperheroRouter from "../../../appModules/v1/superhero/superhero.router";
 
 class Version1APIs {
   public app: express.Application;
-  private readonly controllers: Controller[]
+  private readonly apis: ApiRouter[]
 
   /**
-   * 
    * @constructor
-   * @param controllers 
-   * @param port 
    */
   constructor() {
     this.app = express();
-    this.controllers = [
-      new SuperheroController()
+    this.apis = [
+      new SuperheroRouter()
     ];
-    this.initializeControllers();
+    this.initializeAPIRoutes();
   }
 
   /**
-   * @func initializeControllers Initializes controller.
+   * @func initializeAPIRoutes Initializes controller.
    */
-  private initializeControllers() {
-    this.controllers.forEach(controller => {
-      this.app.use("/v1", controller.router);
+  private initializeAPIRoutes() {
+    this.apis.forEach(api => {
+      this.app.use("/v1", api.router);
     });
   }
 }

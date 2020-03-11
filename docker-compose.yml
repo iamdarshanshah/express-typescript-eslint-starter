@@ -1,4 +1,4 @@
-version: "3"
+version: "3.5"
 
 services:
   ts-starter-service:
@@ -13,7 +13,8 @@ services:
       restart_policy:
         condition: always
     ports:
-      - "4000:4000"
+      - "5000:5000"
+    env_file: "./docker_env/local/docker.local.env"
     depends_on: 
       - mongodb
 

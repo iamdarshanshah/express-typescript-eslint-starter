@@ -1,7 +1,7 @@
 import superheroModel from "./superhero.model";
 import Superhero from "./superhero.interface";
 
-import logger from "../../applogger";
+import logger from "../../../logger";
 
 class SuperheroDao {
   getAllSuperheroes(done: CallableFunction){
