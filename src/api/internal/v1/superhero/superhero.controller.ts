@@ -6,7 +6,7 @@
  * @author Darshan Shah
  */
 
-import SuperheroService from "./superhero.service";
+import SuperheroService from "../../../../appModules/v1/superhero";
 
 class SuperheroController {
   public getAllSuperheroes(done: CallableFunction){

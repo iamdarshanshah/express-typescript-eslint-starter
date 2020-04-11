@@ -10,7 +10,7 @@ import express from "express";
 
 import ApiRouter from "../../../common/interfaces/apiRouter.interface";
 
-import SuperheroRouter from "../../../appModules/v1/superhero/superhero.router";
+import SuperheroRouter from "./superhero/superhero.router";
 
 class Version1APIs {
   public app: express.Application;
