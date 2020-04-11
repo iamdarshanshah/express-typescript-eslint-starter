@@ -11,9 +11,9 @@ import { NextFunction, Request, Response } from "express";
 
 
 import mongoose from "mongoose";
-import superheroModel from "./superhero.model";
-import HttpException from "../../../common/exceptions/HttpException";
-import Superhero from "./superhero.interface";
+import superheroModel from "../../../../appModules/v1/superhero/superhero.model";
+import HttpException from "../../../../common/exceptions/HttpException";
+import Superhero from "../../../../appModules/v1/superhero/superhero.interface";
 import SuperheroController from "./superhero.controller";
 
 export default class SuperheroRouter {

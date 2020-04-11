@@ -21,6 +21,7 @@
 # Logs
 logs
 *.log
+*.log.*
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -34,9 +35,11 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/
+dist/
 
 # Dependency directories
 node_modules/
+package-lock.json
 
 # TypeScript v1 declaration files
 typings/
@@ -62,5 +65,13 @@ typings/
 # dotenv environment variables file
 .env
 .env.test
+
+# compodoc generated project documentation
+
+documentation
+
+# test coverage
+
+coverage
 
 # End of https://www.gitignore.io/api/node,linux

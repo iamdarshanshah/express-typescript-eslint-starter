@@ -12,6 +12,8 @@ import logger from "./logger";
 
 import config from "./appConfigs";
 
+import verifyToken from "./appModules/v1/internalAuthentication";
+
 export default class App {
   public app: express.Application;
   public port: number;
@@ -58,13 +60,14 @@ export default class App {
     this.app.use(errorMiddleware);
   }
 
-  /**
+  /** 
    * @func initializeAPIs initializes all the apis for specific version
    * @param apis
    */
   private initializeAPIs(APIs: Version1Apis[]){
     APIs.forEach(api => {
-      this.app.use("/", api.app);
+      this.app.use("/api", api.app);
+      // this.app.use("/api", new verifyToken().internalVerifyAuth, api.app);  // Api protected
     });
   }
 
