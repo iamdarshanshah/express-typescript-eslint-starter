@@ -1,4 +1,4 @@
-# Steps to run the compile and run the server
+# Steps to compile and run the server
 
 - Run `yarn` or `npm install`
 - Run `yarn build` or `npm run build`
@@ -7,10 +7,6 @@
 ## To run using docker
 
 - Run `docker-compose -f docker-compose.yml up`
-
-## To run mongo as a container
-
-- Run `docker-compose -f docker-compose-resources.yml up`
   
 ## Generate documentation for code. (uses tsconfig.json file present in your project for generating/serving docs)
 
